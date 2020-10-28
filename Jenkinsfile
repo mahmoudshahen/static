@@ -30,16 +30,15 @@ pipeline {
         }
         stage('Deploy Kubernetes') {
             steps{
-                withAWS(credentials: 'aws-static', region: 'us-east-2') {
-
+                  withAWS(credentials: 'aws-static', region: 'us-east-2') {
+                      sh 'kubectl apply -f kub.yml'
+                      sh 'kubectl get service/capstone'
                 }
             }
         }
         stage('Rollout deployment') {
             steps {
-                withAWS(credentials: 'aws-static', region: 'us-east-2') {
-
-                }
+                sh 'kubectl rollout restart deployment.apps/webserver'
             }
             
         }
