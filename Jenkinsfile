@@ -35,5 +35,8 @@ pipeline {
                 }
             }
         }
+        stage('Rollout deployment') {
+            sh 'kubectl rollout restart deployment/webserver'  
+        }
     }
 }
