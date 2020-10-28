@@ -9,7 +9,7 @@ pipeline {
         stage('Lint Python') {
             steps {
                 sh 'echo Linting Python'
-                sh 'pylint app.js'
+                sh 'pylint app.py'
             }
         }
         stage('Building image locally') {
