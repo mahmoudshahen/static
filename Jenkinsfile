@@ -36,7 +36,10 @@ pipeline {
             }
         }
         stage('Rollout deployment') {
-            sh 'kubectl rollout restart deployment/webserver'  
+            steps {
+                 sh 'kubectl rollout restart deployment/webserver' 
+            }
+            
         }
     }
 }
