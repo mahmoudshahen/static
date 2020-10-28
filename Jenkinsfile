@@ -31,8 +31,7 @@ pipeline {
         stage('Deploy Kubernetes') {
             steps{
                 withAWS(credentials: 'aws-static', region: 'us-east-2') {
-                    sh 'sudo kubectl apply -f kub.yml'
-                    sh 'sudo kubectl get service/capstone'
+
                 }
             }
         }
