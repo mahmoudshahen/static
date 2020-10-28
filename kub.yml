@@ -1,4 +1,4 @@
-apiVersion: apps/v1
+apiVersion: app/v1
 kind: Deployment
 metadata:
   name: webserver
@@ -20,3 +20,18 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 80
+---
+apiVersion: app/v1
+kind: Service
+metadata:
+  name: capstone
+  labels:
+    app: capstone
+spec:
+  type: LoadBalancer
+  selector:
+    app: capstone
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
