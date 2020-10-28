@@ -37,7 +37,9 @@ pipeline {
         }
         stage('Rollout deployment') {
             steps {
-                
+                withAWS(credentials: 'aws-static', region: 'us-east-2') {
+
+                }
             }
             
         }
